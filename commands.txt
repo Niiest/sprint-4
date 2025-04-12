@@ -1,0 +1,3 @@
+Сброс оффсетов (Ошибка смещения вне разрешенного диапазона (Offset Out of Range)):
+kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group consumer --reset-offsets --to-earliest --execute --topic mytopic
+
