@@ -16,12 +16,17 @@ type User struct {
 }
 
 func main() {
-	bootstrapServers := "localhost:9092" // Replace with your Kafka broker address
+	bootstrapServers := "localhost:9093" // Replace with your Kafka broker address
 	topic := "test"                      // Replace with your Kafka topic
 
 	// SSL and SASL configuration
 	sslConfig := &kafka.ConfigMap{
-		"bootstrap.servers": bootstrapServers,
+		"bootstrap.servers":        bootstrapServers, // Replace with your Kafka broker address
+		"security.protocol":        "SSL",
+		"ssl.ca.location":          "ca.crt",                      // Path to your CA certificate
+		"ssl.certificate.location": "./kafka-1-creds/kafka-1.crt", // Path to your client certificate
+		"ssl.key.location":         "./kafka-1-creds/kafka-1.key", // Path to your client key
+		"ssl.key.password":         "yandex",                      // Password for the client key
 	}
 
 	// Create a new producer
